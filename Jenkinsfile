@@ -37,16 +37,18 @@ def readProb;
 		     dir('subDir') {
 			checkout "/tmp/${PACKAGE_NAME}_${BUILD_NUMBER}"
                     echo "Checkout is Completed"
-      }
-   }
-   stage('Build'){
-      steps{
-       script{
-	 sh "mvn -version"
-         sh "mvn clean test"
-	 sh "mvn compile"
-	 echo "Maven Compile Stage is completed"
-	 }
-      }
-   }
-}
+		     }
+		   }
+                 }
+               }
+               stage('Build'){
+               steps{
+                   script{
+	                sh "mvn -version"
+                        sh "mvn clean test"
+	                sh "mvn compile"
+	                echo "Maven Compile Stage is completed"
+	                 }
+                      }
+                  }
+              }
