@@ -3,6 +3,9 @@ def readProb;
 	def FAILED_STAGE
 	pipeline {
 	agent any
+	tools {
+        maven "mymaven"
+        }
 	stages {
 	    stage('Setup'){
 	    steps {
@@ -25,14 +28,24 @@ def readProb;
 			}
 		}
 		}
-		
-	stage('Git Pull'){
-        steps {	dir("${readProb['Project_name']}"){
-		 git branch: "${readProb['branch']}", credentialsId: "${readProb['credentials']}", url: "${readProb['GITHUB_URL']}"    
-	      }
-		}
-		}
-		
-		
-		}
-	}
+		stages{
+                    stage('Checkout'){
+                    steps{
+	                script{
+		        git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
+	            }
+		     dir('subDir') {
+			checkout "/tmp/${PACKAGE_NAME}_${BUILD_NUMBER}"
+                    echo "Checkout is Completed"
+      }
+   }
+   stage('Build'){
+      steps{
+       script{
+	 sh "mvn -version"
+         sh "mvn clean test"
+	 sh "mvn compile"
+	 echo "Maven Compile Stage is completed"
+	 }
+      }
+   }
