@@ -1,6 +1,5 @@
 def readProb;
-		
-	def FAILED_STAGE
+def FAILED_STAGE;
 	pipeline {
 	agent any
 	tools {
@@ -14,7 +13,7 @@ def readProb;
 	        FAILED_STAGE=env.STAGE_NAME
 	        Setup= "${readProb['Setup']}"
 			if ("$Setup" == "yes") {
-		 sh "git config --global user.email neer90k@gmail.com"
+		sh "git config --global user.email neer90k@gmail.com"
 	        sh "git config --global user.name ${readProb['user.name']}"
 	        sh 'git config --global credential.helper cache'
 	        sh 'git config --global credential.helper cache'
@@ -35,7 +34,7 @@ def readProb;
 		        git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
 	            }
 		     dir('subDir') {
-			   checkout "/tmp/${PACKAGE_NAME}_${BUILD_NUMBER}"
+			   checkout '/tmp/${BUILD_NUMBER}'
                     echo "Checkout is Completed"
                    }
                    }
