@@ -28,8 +28,7 @@ def readProb;
 	    }
 	    }
 	}
-		stages {
-			stage('Checkout') {
+		stage('Checkout') {
 				steps {
 				git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
 					post {
@@ -49,4 +48,3 @@ def readProb;
 				}
 			}
 		} 
-	}
