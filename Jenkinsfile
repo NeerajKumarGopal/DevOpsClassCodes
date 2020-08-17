@@ -40,6 +40,8 @@ def readProb;
 					}
 				}
 			}
+		}
+		stages {
 			stage('Build') {
 				steps {
 					script {
