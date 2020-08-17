@@ -28,12 +28,11 @@ def readProb;
 	    }
 	    }
 	}
-		 /* stages {
+		stages {
 			stage('Checkout') {
 				steps {
-					script {
-						git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
-					}
+				git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
+					post {
 					dir('subDir') {
 						checkout "/tmp/${PACKAGE_NAME}_${BUILD_NUMBER}"
 						echo "Checkout is Completed"
@@ -43,13 +42,11 @@ def readProb;
 		}
 			stage('Build') {
 				steps {
-					script {
-						sh "mvn -version"
-					        sh "mvn clean test"
-	                                        sh "mvn compile"
-					        echo "Maven Compile Stage is completed"
-					}
+				sh "mvn -version"
+			        sh "mvn clean test"
+	                        sh "mvn compile"
+			        echo "Maven Compile Stage is completed"
 				}
 			}
-		} */
+		} 
 	}
