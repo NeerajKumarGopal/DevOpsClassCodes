@@ -13,7 +13,7 @@ def readProb;
 	        FAILED_STAGE=env.STAGE_NAME
 	        Setup= "${readProb['Setup']}"
 			if ("$Setup" == "yes") {
-		 sh "git config --global user.email neer90k@gmail.com"
+		sh "git config --global user.email neer90k@gmail.com"
 	        sh "git config --global user.name ${readProb['user.name']}"
 	        sh 'git config --global credential.helper cache'
 	        sh 'git config --global credential.helper cache'
@@ -28,7 +28,7 @@ def readProb;
 	    }
 	    }
 	}
-		stages {
+		 /* stages {
 			stage('Checkout') {
 				steps {
 					script {
@@ -41,7 +41,6 @@ def readProb;
 				}
 			}
 		}
-		stages {
 			stage('Build') {
 				steps {
 					script {
@@ -52,5 +51,4 @@ def readProb;
 					}
 				}
 			}
-		}
-	}
+		} */
