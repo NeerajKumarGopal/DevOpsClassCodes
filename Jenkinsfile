@@ -1,5 +1,4 @@
 def readProb;
-		
 	def FAILED_STAGE
 	pipeline {
 	agent any
@@ -29,8 +28,7 @@ def readProb;
 		}
 		}
 		}
-		stages {
-                    stage('Checkout') {
+		stage('Checkout') {
                     steps {
 	                script {
 		        git 'https://github.com/NeerajKumarGopal/DevOpsClassCodes.git'
@@ -42,7 +40,7 @@ def readProb;
                }
            }
       }
-   stage('Build') {
+stage('Build') {
       steps {
        script {
 	 sh "mvn -version"
