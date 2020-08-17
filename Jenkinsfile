@@ -39,15 +39,14 @@ def readProb;
                    }
                }
            }
-      }
-stage('Build') {
-      steps {
-       script {
-	 sh "mvn -version"
-         sh "mvn clean test"
-	 sh "mvn compile"
-	 echo "Maven Compile Stage is completed"
-	 }
-      }
-   }
-}
+		stage('Build') {
+			steps {
+				script {
+					sh "mvn -version"
+					sh "mvn clean test"
+	                                sh "mvn compile"
+					echo "Maven Compile Stage is completed"
+				}
+			}
+		}
+	}
