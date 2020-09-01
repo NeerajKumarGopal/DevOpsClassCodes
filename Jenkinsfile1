@@ -16,9 +16,9 @@ pipeline {
         stage ('Setup') {
             steps {
                 script{
-                    readProb = readFile 'testconfig.properties'
-                    FAILED_STAGE = env.STAGE_NAME
-                    Setup = "${readProb['Setup']}"
+                    readProb= readFile 'testconfig.properties'
+                    FAILED_STAGE= env.STAGE_NAME
+                    Setup= "${readProb['Setup']}"
                     if ("$Setup"=="yes") {
                             sh "git config --global user.email neer90k@gmail.com"
                             sh "git config --global user.name ${readProb['user.name']}"
