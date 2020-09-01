@@ -19,9 +19,9 @@ pipeline {
                     readProb = readFile 'testconfig.properties'
                     FAILED_STAGE = env.STAGE_NAME
                     Setup = "${readProb['Setup']}"
-                    if ("${Setup}"=="yes") {
-                        sh "git config --global user.email neer90k@gmail.com"
-                        sh "git config --global user.name ${readProb['user.name']}"
+                    if ("$Setup"=="yes") {
+                            sh "git config --global user.email neer90k@gmail.com"
+                            sh "git config --global user.name ${readProb['user.name']}"
 	                    sh 'git config --global credential.helper cache'
 	                    sh 'git config --global credential.helper cache'
 	                    sh "if [ -d ${readProb['Project_name']} ]; then rm -Rf ${readProb['Project_name']}; fi"
