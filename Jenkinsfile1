@@ -4,7 +4,7 @@ currentBuild.displayName = "Integrate-#"+currentBuild.number
 pipeline {
     agent any
     stages {
-        stage ('Setup') {
+        stage ('Git Chekout') {
             steps {
                 script{
                     readProb = readFile 'testconfig.properties'
