@@ -1,5 +1,6 @@
 def readProb
 def FAILED_STAGE
+def Setup
 currentBuild.displayName = "Integrate-#"+currentBuild.number
 pipeline {
     agent any
