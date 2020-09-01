@@ -1,5 +1,5 @@
 def readProb
-def failed_stage
+def FAILED_STAGE
 currentBuild.displayName = "Integrate-#"+currentBuild.number
 pipeline {
     agent any
@@ -8,9 +8,9 @@ pipeline {
             steps {
                 script{
                     readProb = readFile 'testconfig.properties'
-                    failed_stage = env.STAGE_NAME
+                    FAILED_STAGE = env.STAGE_NAME
                     Setup = "${readProb['Setup']}"
-                    if ("$Setup" == "yes") {
+                    if ("$Setup"=="yes") {
                         sh "git config --global user.email neer90k@gmail.com"
                         sh "git config --global user.name ${readProb['user.name']}"
 	                    sh 'git config --global credential.helper cache'
