@@ -8,7 +8,6 @@ def readProb;
 	    )
 	}
 def FAILED_STAGE
-def Setup
 currentBuild.displayName = "Integrate-#"+currentBuild.number
 pipeline {
     agent any
@@ -18,8 +17,6 @@ pipeline {
                 script{
                     readProb = readFile file:'testconfig.properties'
                     FAILED_STAGE = env.STAGE_NAME
-                    Setup = "${readProb['Setup']}"
-                    if ("$Setup"=="yes") {
                             sh "git config --global user.email neer90k@gmail.com"
                             sh "git config --global user.name ${readProb['user.name']}"
 	                    sh 'git config --global credential.helper cache'
@@ -27,11 +24,7 @@ pipeline {
 	                    sh "if [ -d ${readProb['Project_name']} ]; then rm -Rf ${readProb['Project_name']}; fi"
 	                    sh "if [ -d ${readProb['PMD_result']} ]; then rm -Rf ${readProb['PMD_result']};  fi"        
 	                    sh "mkdir ${readProb['PMD_result']}"
-			}
-			else {
-			 echo "Skipped stage"
-                    }
-                    
+			}                 
                 }
                 
             }
