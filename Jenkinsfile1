@@ -9,7 +9,7 @@ pipeline {
                 script{
                     readProb = readFile 'testconfig.properties'
                     failed_stage = env.STAGE_NAME
-                    Setup = "{readProb['Setup']}"
+                    Setup = "${readProb['Setup']}"
                     if ("$Setup" == "yes") {
                         sh "git config --global user.email neer90k@gmail.com"
                         sh "git config --global user.name ${readProb['user.name']}"
