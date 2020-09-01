@@ -1,7 +1,7 @@
 def readProb;
 	def notify(status){
 	    emailtext (
-	      to: "awstrainingwithus@gmail.com",
+	      to: "neer90k@gmail.com",
 	      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 	      body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 	        <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
@@ -19,7 +19,7 @@ pipeline {
                     readProb = readFile 'testconfig.properties'
                     FAILED_STAGE = env.STAGE_NAME
                     Setup = "${readProb['Setup']}"
-                    if ("$Setup"=="yes") {
+                    if ("${Setup}"=="yes") {
                         sh "git config --global user.email neer90k@gmail.com"
                         sh "git config --global user.name ${readProb['user.name']}"
 	                    sh 'git config --global credential.helper cache'
